@@ -1,47 +1,36 @@
 <script>
-import axios from 'axios';
+import ProjectCard from './components/ProjectCard.vue';
+import { state } from './state.js';
+
 export default {
   name: 'App',
+
   data() {
     return {
-      base_url: 'http://127.0.0.1:8000',
-      projects_api: '/api/projects',
-      projects: [],
+      state
     }
 
   },
+  components: {
+    ProjectCard
+  },
   methods: {
-    getProjects() {
-      axios
-        .get(this.base_url + this.projects_api)
-        .then(response => {
-          console.log(response);
-          this.projects = response.data.result
-        })
-        .catch(error => {
-          console.error(error);
-        })
-    }
+
   },
   mounted() {
-    this.getProjects()
+    this.state.getProjects()
+
   }
 }
 </script>
 
 <template>
   <div class="container">
+    <h1>Projects</h1>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
-      <div class="col" v-for="project in projects.data">
-        <div class="card">
 
-          <img :src="project.thumb" alt="">
+      <ProjectCard :project="project" v-for="project in this.state.projects.data" />
 
-          <h3>{{ project.title }}</h3>
-
-          <div>{{ project.description }}</div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
