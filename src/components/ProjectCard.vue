@@ -22,11 +22,11 @@ export default {
 
                 <h3><strong>Title:</strong>{{ project.title }}</h3>
 
-                <!-- <div><strong>Description:</strong>{{ project.description }}</div>
+                <div><strong>Description:</strong>{{ project.description }}</div>
 
                 <div><strong>Content:</strong>{{ project.content }}</div>
 
-                <div><strong>Project Url:</strong>{{ project.project_url }}</div>
+                <!--<div><strong>Project Url:</strong>{{ project.project_url }}</div>
 
                 <div><strong>Git_url:</strong>{{ project.git_url }}</div>
 

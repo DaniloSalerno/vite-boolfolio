@@ -1,5 +1,7 @@
 <script>
 import ProjectCard from './components/ProjectCard.vue';
+import AppFooter from './components/AppFooter.vue';
+import AppHeader from './components/AppHeader.vue';
 import { state } from './state.js';
 
 export default {
@@ -12,7 +14,9 @@ export default {
 
   },
   components: {
-    ProjectCard
+    ProjectCard,
+    AppFooter,
+    AppHeader
   },
   methods: {
     nextPage() {
@@ -46,18 +50,19 @@ export default {
     lastPage() {
       this.state.api_page = this.state.projects.last_page
       this.state.getProjects()
-    },
+    }
   },
   mounted() {
     this.state.getProjects()
-
   }
 }
 </script>
 
 <template>
+  <AppHeader />
+
   <div class="container">
-    <h1>Projects</h1>
+    <h1 class="py-5">Projects</h1>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
 
       <ProjectCard :project="project" v-for="project in this.state.projects.data" />
@@ -99,6 +104,8 @@ export default {
       </ul>
     </nav>
   </div>
+
+  <AppFooter />
 </template>
 
 <style scoped></style>
