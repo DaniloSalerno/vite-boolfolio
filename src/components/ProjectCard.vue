@@ -22,7 +22,7 @@ export default {
 
                 <h3><strong>Title:</strong>{{ project.title }}</h3>
 
-                <div><strong>Description:</strong>{{ project.description }}</div>
+                <!-- <div><strong>Description:</strong>{{ project.description }}</div>
 
                 <div><strong>Content:</strong>{{ project.content }}</div>
 
@@ -35,7 +35,7 @@ export default {
                 <div><strong>Technologies:</strong></div>
                 <ul>
                     <li v-for="technology in project.technologies">{{ technology.name }}</li>
-                </ul>
+                </ul> -->
 
 
 
