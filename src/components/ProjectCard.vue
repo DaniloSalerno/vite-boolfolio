@@ -14,9 +14,9 @@ export default {
 
 <template>
     <div class="col">
-        <div class="card">
+        <div class="card h-100">
 
-            <img :src="project.thumb" alt="">
+            <img height="200" class="object-fit-cover" :src="project.thumb" alt="">
 
             <div class="card-body">
 
@@ -26,7 +26,7 @@ export default {
 
                 <div><strong>Content:</strong>{{ project.content }}</div>
 
-                <!--<div><strong>Project Url:</strong>{{ project.project_url }}</div>
+                <div><strong>Project Url:</strong>{{ project.project_url }}</div>
 
                 <div><strong>Git_url:</strong>{{ project.git_url }}</div>
 
@@ -35,7 +35,7 @@ export default {
                 <div><strong>Technologies:</strong></div>
                 <ul>
                     <li v-for="technology in project.technologies">{{ technology.name }}</li>
-                </ul> -->
+                </ul>
 
 
 
