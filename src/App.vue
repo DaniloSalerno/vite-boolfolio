@@ -15,10 +15,38 @@ export default {
     ProjectCard
   },
   methods: {
-    page_project(page) {
-      this.state.api_page = page;
+    nextPage() {
+      if (this.state.projects.current_page >= 1 && this.state.api_page < this.state.projects.last_page) {
+        this.state.api_page++
+        this.state.getProjects()
+      }
+    },
+    prevPage() {
+      if (this.state.projects.current_page <= this.state.projects.last_page && this.state.api_page > 1) {
+        this.state.api_page--
+        this.state.getProjects()
+      }
+    },
+
+    currentPage() {
+      if (this.state.projects.current_page === 1) {
+        this.state.api_page++
+      } else if (this.state.projects.current_page === this.state.projects.last_page) {
+        this.state.api_page--
+      }
       this.state.getProjects()
-    }
+
+    },
+
+    firstPage() {
+      this.state.api_page = 1
+      this.state.getProjects()
+    },
+
+    lastPage() {
+      this.state.api_page = this.state.projects.last_page
+      this.state.getProjects()
+    },
   },
   mounted() {
     this.state.getProjects()
@@ -39,16 +67,32 @@ export default {
 
     <nav aria-label="Page navigation">
       <ul class="pagination    ">
-        <li class="page-item disabled">
-          <button class="page-link" aria-label="Previous">
+        <li class="page-item">
+
+          <button class="page-link" @click="firstPage()">
             <span aria-hidden="true">&laquo;</span>
           </button>
+
         </li>
-        <li class="page-item"><button class="page-link" @click="page_project(1)">1</button></li>
-        <li class="page-item"><button class="page-link" @click="page_project(2)">2</button></li>
-        <li class="page-item"><button class="page-link" @click="page_project(3)">3</button></li>
         <li class="page-item">
-          <button class="page-link" href="#" aria-label="Next">
+          <button class="page-link" @click="prevPage()" :class="this.state.projects.current_page === 1 ? 'active' : ''">
+            {{ this.state.api_page < 3 ? 1 : this.state.api_page - 1 }} </button>
+        </li>
+
+        <li class="page-item">
+          <button class="page-link" @click="currentPage()" :class="this.state.projects.current_page > 1 ? 'active' : ''">
+            {{ this.state.projects.current_page > 2 ? this.state.projects.current_page :
+              2 }} </button>
+        </li>
+
+        <li class="page-item" v-show="this.state.api_page !== this.state.projects.last_page">
+          <button class="page-link" @click="nextPage()"
+            :class="this.state.projects.current_page > this.state.projects.last_page ? 'active' : ''">
+            {{ this.state.api_page < 2 ? this.state.api_page + 2 : this.state.api_page + 1 }} </button>
+        </li>
+
+        <li class="page-item">
+          <button class="page-link" @click="lastPage()">
             <span aria-hidden="true">&raquo;</span>
           </button>
         </li>
