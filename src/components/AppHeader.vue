@@ -11,20 +11,22 @@ export default {
 
 <template>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <nav class="navbar navbar-expand-sm navbar-light bg-primary p-0">
             <div class="container">
-                <ul class="list-unstyled d-flex">
+                <ul class="list-unstyled d-flex gap-3 m-0">
                     <li>
-                        <RouterLink class="nav-link active" to="/">Home</RouterLink>
+                        <RouterLink class="nav-link py-3" active-class="active bg-white" to="/">Home</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="nav-link active" to="/about">About</RouterLink>
+                        <RouterLink class="nav-link py-3" active-class="active bg-white" to="/about">About</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="nav-link active" to="/contacts">Contacts</RouterLink>
+                        <RouterLink class="nav-link py-3" active-class="active bg-white" to="/contacts">Contacts
+                        </RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="nav-link active" to="/projects">Projects</RouterLink>
+                        <RouterLink class="nav-link py-3" active-class="active bg-white" to="/projects">Projects
+                        </RouterLink>
                     </li>
                 </ul>
 
@@ -33,4 +35,4 @@ export default {
     </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

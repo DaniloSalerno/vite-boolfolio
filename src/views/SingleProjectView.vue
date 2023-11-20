@@ -6,7 +6,9 @@ export default {
     name: 'SingleProjectView',
     data() {
         return {
-            project: {}
+            project: {},
+            type: '',
+            technologies: []
         }
 
     },
@@ -17,6 +19,8 @@ export default {
             .then(response => {
                 //console.log(response.data.result);
                 this.project = response.data.result
+                this.type = response.data.result.type.name
+                this.technologies = response.data.result.technologies
             })
             .catch(error => {
                 console.error(error);
@@ -28,19 +32,73 @@ export default {
 </script>
 
 <template>
-    <div>
-        <div>slug: {{ project.slug }}</div>
-        <div>id: {{ project.id }}</div>
-        <div>title: {{ project.title }}</div>
-        <div>description: {{ project.description }}</div>
-        <div>content: {{ project.content }}</div>
-        <div>type: {{ project.type.name }}</div>
-        <div>technologies:</div>
-        <ul v-for="technology in project.technologies">
-            <li>{{ technology.name }}</li>
-        </ul>
+    <div class="project py-4">
+        <div class="container">
+
+            <div class="card border-0 mx-auto col-3 d-flex flex-column gap-4">
+
+                <img width="300" :src="project.thumb" alt="">
+
+                <div class="d-flex gap-2">
+                    <strong>Project name</strong>
+                    <div>{{ project.title }}</div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <strong>Description:</strong>
+                    <div>{{ project.description }}</div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <strong>Content:</strong>
+                    <div>{{ project.content }}</div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <strong>Type:</strong>
+                    <div class="badge bg-warning">{{ type }}</div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <strong>Technologies:</strong>
+                    <ul class="list-unstyled d-flex gap-2 flex-wrap">
+                        <li v-for="technology in technologies" class="badge bg-success">{{ technology.name }}</li>
+                    </ul>
+                </div>
+
+                <div class="links d-flex flex-column gap-2 py-4">
+                    <a class="btn" :href="project.git_url" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                        View on GitHub
+                    </a>
+
+                    <a class="btn" :href="project.project_url" target="_blank">
+                        <i class="fa-solid fa-globe"></i>
+                        View projects page
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </div>
 </template>
 
 
-<style lang="scss" scoped></style>
+<style scoped>
+.links {
+
+    a {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.75);
+        text-decoration: none;
+
+        &:hover {
+            font-size: 1.25rem;
+            color: white;
+            background-color: black;
+
+            transition: all 0.5s;
+        }
+    }
+}
+</style>
