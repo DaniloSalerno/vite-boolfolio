@@ -7,6 +7,9 @@ export const state = reactive({
     projects_api: '/api/projects',
     projects: [],
     api_page: 1,
+    project: {},
+    type: '',
+    technologies: [],
 
     getProjects() {
         axios
@@ -18,6 +21,21 @@ export const state = reactive({
             .then(response => {
                 //console.log(response);
                 this.projects = response.data.result
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    },
+
+    getSingleProject(url) {
+
+
+        axios.get(url)
+            .then(response => {
+                //console.log(response.data.result);
+                this.project = response.data.result
+                this.type = response.data.result.type.name
+                this.technologies = response.data.result.technologies
             })
             .catch(error => {
                 console.error(error);
