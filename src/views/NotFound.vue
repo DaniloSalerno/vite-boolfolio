@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container py-5">
         <h1>Not Found</h1>
         <p>Oops! we couldn't find that page. Try going <RouterLink to="/" class="btn btn-primary">Home</RouterLink>
         </p>
@@ -14,4 +14,8 @@ export default {
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+    min-height: 500px;
+}
+</style>
