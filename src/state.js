@@ -1,6 +1,7 @@
 import { reactive } from "vue";
 import axios from 'axios';
 
+
 export const state = reactive({
 
     base_url: 'http://127.0.0.1:8000',
@@ -41,18 +42,24 @@ export const state = reactive({
             })
     },
 
-    getSingleProject(url) {
+    //MOVED TO SINGLEPROJECTVIEW
+    /* getSingleProject(url) {
 
 
         axios.get(url)
             .then(response => {
                 //console.log(response.data.result);
-                this.project = response.data.result
-                this.type = response.data.result.type.name
-                this.technologies = response.data.result.technologies
+                if (response.data.success) {
+                    this.project = response.data.result
+                    this.type = response.data.result.type.name
+                    this.technologies = response.data.result.technologies
+                } else {
+                    console.log('pagina non trovata');
+                    //this.$router.push({ name: 'not-found' })
+                }
             })
             .catch(error => {
                 console.error(error);
             })
-    }
+    } */
 })
