@@ -16,7 +16,7 @@ export const state = reactive({
                 }
             })
             .then(response => {
-                console.log(response);
+                //console.log(response);
                 this.projects = response.data.result
             })
             .catch(error => {
