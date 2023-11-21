@@ -12,6 +12,7 @@ export const state = reactive({
     project: {},
     type: '',
     technologies: [],
+    loading: false,
 
     getLatestProjects() {
         axios
@@ -19,6 +20,7 @@ export const state = reactive({
             .then(response => {
                 console.log(response);
                 this.latestProjects = response.data.result
+                this.loading = true
             })
             .catch(error => {
                 console.error(error);
