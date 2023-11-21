@@ -43,8 +43,8 @@ export default {
                     </a>
                 </div>
 
-                <div><strong>Type:</strong>{{ project.type.name }}</div>
-
+                <!-- <div><strong>Type:</strong>{{ project.type.name }}</div>
+ -->
                 <div><strong>Technologies:</strong></div>
                 <ul>
                     <li v-for="technology in project.technologies">{{ technology.name }}</li>

@@ -7,10 +7,11 @@ export const state = reactive({
     base_url: 'http://127.0.0.1:8000',
     projects_api: '/api/projects',
     latestProject_api: '/api/projects-latest',
+    types_api: '/api/types',
     latestProjects: [],
     api_page: 1,
     project: {},
-    type: '',
+    types: [],
     technologies: [],
     loading: false,
 
@@ -18,12 +19,21 @@ export const state = reactive({
         axios
             .get(this.base_url + this.latestProject_api)
             .then(response => {
-                console.log(response);
+                //console.log(response);
                 this.latestProjects = response.data.result
                 this.loading = true
             })
             .catch(error => {
                 console.error(error);
             })
-    }
+    },
+    getTypes() {
+        axios.get(this.base_url + this.types_api)
+            .then(response => {
+                this.types = response.data.result.data;
+                console.log(this.types);
+            }).catch(err => {
+                console.error(err);
+            })
+    },
 })

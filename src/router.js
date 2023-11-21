@@ -5,6 +5,7 @@ import AboutView from './views/AboutView.vue';
 import ContactsView from './views/ContactsView.vue';
 import ProjectsView from './views/ProjectsView.vue';
 import SingleProjectView from './views/SingleProjectView.vue';
+import TypeView from './views/TypeView.vue';
 import NotFound from './views/NotFound.vue';
 
 
@@ -14,6 +15,8 @@ const routes = [
     { path: '/contacts', name: 'contacts', component: ContactsView },
     { path: '/projects', name: 'projects', component: ProjectsView },
     { path: '/projects/:slug', name: 'project', component: SingleProjectView },
+    { path: '/type/:slug', name: 'type', component: TypeView },
+
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]
 

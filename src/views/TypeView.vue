@@ -1,59 +1,52 @@
 <script>
-import axios from 'axios';
+import axios from "axios";
 import ProjectCard from '../components/ProjectCard.vue';
+
 import { state } from '../state.js';
 
 export default {
-    name: 'ProjectsView',
-    data() {
-        return {
-            state,
-
-            projects: [],
-
-            loading: false,
-
-            links: [],
-
-            currentPage: 1,
-
-            lastPage: null,
-        }
-
-    },
+    name: 'TypeView',
     components: {
         ProjectCard
     },
-    methods: {
-        getProjects(url) {
-            axios
-                .get(url)
-                .then(response => {
-                    this.projects = response.data.result.data;
-                    this.lastPage = response.data.result.last_page;
-                    this.links = response.data.result.links;
-                    this.loading = true;
-                    console.log(this.projects);
-
-                })
-                .catch(error => {
-                    console.error(error)
-                })
+    data() {
+        return {
+            state,
+            projects: [],
+            loading: false,
         }
     },
+    methods: {
+
+    },
     mounted() {
-        this.getProjects(this.state.base_url + this.state.projects_api)
-        this.state.getTypes()
+        axios.get(this.state.base_url + this.state.types_api + `/${this.$route.params.slug}`)
+            .then(response => {
+                //console.log(response.data.result);
+                if (response.data.success) {
+                    this.projects = response.data.result.projects
+                    this.loading = true
+                    console.log(this.projects);
+                } else {
+                    console.log('pagina non trovata');
+                    this.$router.push({ name: 'NotFound' })
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            })
+
     }
+
 }
 </script>
 
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row pb-5">
             <div class="col-9">
                 <div v-if="this.loading">
-                    <h1 class="py-5">Projects</h1>
+                    <h1 class="py-5">Projects by {{ $route.params.slug }}</h1>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
 
                         <ProjectCard :project="project" v-for="project in this.projects" />
@@ -61,7 +54,7 @@ export default {
 
                     </div>
 
-                    <div class="py-5">
+                    <!-- <div class="py-5">
 
                         <nav aria-label="Page navigation" class="d-flex justify-content-center">
                             <ul class="pagination">
@@ -73,7 +66,7 @@ export default {
                             </ul>
                         </nav>
 
-                    </div>
+                    </div> -->
                 </div>
 
                 <div v-else>
@@ -100,16 +93,6 @@ export default {
                 </div>
             </div>
 
-            <div class="col-3 py-5 text-center">
-                <div>
-                    <ul class=" list-unstyled">
-                        <li v-for="typ in this.state.types">
-                            <router-link :to="{ name: 'type', params: { slug: typ.slug } }" class="text-decoration-none"> {{
-                                typ.name }} </router-link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
 
     </div>
