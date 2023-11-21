@@ -12,31 +12,45 @@ export default {
     data() {
         return {
             state,
+
             projects: [],
+
             loading: false,
-            url: `http://127.0.0.1:8000/api/types/${this.$route.params.slug}`,
+
+            links: [],
+
+            currentPage: 1,
+
+            lastPage: null,
+
+            url: `http://127.0.0.1:8000/api/types/${this.$route.params.slug}/projects`,
 
         }
     },
     methods: {
+        getProjectsByType(url) {
+            axios.get(url)
+                .then(response => {
+                    if (response.data.success) {
+                        this.projects = response.data.result.data
+                        this.lastPage = response.data.result.last_page;
+                        this.links = response.data.result.links;
+                        this.loading = true
+                        //console.log(this.links);
+                    } else {
+                        console.log('pagina non trovata');
+                        this.$router.push({ name: 'NotFound' })
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+        }
 
     },
     mounted() {
-        axios.get(this.url)
-            .then(response => {
-                console.log(response.data.success);
-                if (response.data.success) {
-                    this.projects = response.data.result.projects
-                    this.loading = true
-                    console.log(this.projects);
-                } else {
-                    console.log('pagina non trovata', 'Sono tu type');
-                    this.$router.push({ name: 'NotFound' })
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            })
+
+        this.getProjectsByType(this.url)
 
     }
 
@@ -54,19 +68,19 @@ export default {
 
             </div>
 
-            <!-- <div class="py-5">
+            <div class="py-5">
 
-                        <nav aria-label="Page navigation" class="d-flex justify-content-center">
-                            <ul class="pagination">
-                                <li class="page-item" :class="link.active ? 'active' : ''" aria-current="page"
-                                    v-for="link in this.links">
-                                    <a class="page-link" role="button" @click="this.getProjects(link.url)"
-                                        v-html="link.label"></a>
-                                </li>
-                            </ul>
-                        </nav>
+                <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item" :class="link.active ? 'active' : ''" aria-current="page"
+                            v-for="link in this.links">
+                            <a class="page-link" role="button" @click="this.getProjectsByType(link.url)"
+                                v-html="link.label"></a>
+                        </li>
+                    </ul>
+                </nav>
 
-                    </div> -->
+            </div>
         </div>
 
         <div v-else>

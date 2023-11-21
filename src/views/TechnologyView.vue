@@ -37,7 +37,7 @@ export default {
                         this.loading = true
                         //console.log(this.links);
                     } else {
-                        console.log('pagina non trovata', 'Sono su technology');
+                        console.log('pagina non trovata');
                         this.$router.push({ name: 'NotFound' })
                     }
                 })
