@@ -9,10 +9,10 @@ import NotFound from './views/NotFound.vue';
 
 
 const routes = [
-    { path: '/', component: HomeView },
-    { path: '/about', component: AboutView },
-    { path: '/contacts', component: ContactsView },
-    { path: '/projects', component: ProjectsView },
+    { path: '/', name: 'home', component: HomeView },
+    { path: '/about', name: 'about', component: AboutView },
+    { path: '/contacts', name: 'contacts', component: ContactsView },
+    { path: '/projects', name: 'projects', component: ProjectsView },
     { path: '/projects/:slug', name: 'project', component: SingleProjectView },
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]

@@ -17,43 +17,6 @@ export default {
     ProjectCard,
     AppFooter,
     AppHeader
-  },
-  methods: {
-    nextPage() {
-      if (this.state.projects.current_page >= 1 && this.state.api_page < this.state.projects.last_page) {
-        this.state.api_page++
-        this.state.getProjects()
-      }
-    },
-    prevPage() {
-      if (this.state.projects.current_page <= this.state.projects.last_page && this.state.api_page > 1) {
-        this.state.api_page--
-        this.state.getProjects()
-      }
-    },
-
-    currentPage() {
-      if (this.state.projects.current_page === 1) {
-        this.state.api_page++
-      } else if (this.state.projects.current_page === this.state.projects.last_page) {
-        this.state.api_page--
-      }
-      this.state.getProjects()
-
-    },
-
-    firstPage() {
-      this.state.api_page = 1
-      this.state.getProjects()
-    },
-
-    lastPage() {
-      this.state.api_page = this.state.projects.last_page
-      this.state.getProjects()
-    }
-  },
-  mounted() {
-    this.state.getProjects()
   }
 }
 </script>
