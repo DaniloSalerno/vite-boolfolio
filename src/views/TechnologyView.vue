@@ -5,38 +5,49 @@ import ProjectCard from '../components/ProjectCard.vue';
 import { state } from '../state.js';
 
 export default {
-    name: 'TypeView',
+    name: 'TechnologyView',
     components: {
         ProjectCard
     },
     data() {
         return {
             state,
-            projects: [],
-            loading: false,
-            url: `http://127.0.0.1:8000/api/types/${this.$route.params.slug}`,
 
+            projects: [],
+
+            loading: false,
+
+            links: [],
+
+            currentPage: 1,
+
+            lastPage: null,
+
+            url: `http://127.0.0.1:8000/api/technologies/${this.$route.params.slug}/projects`,
         }
     },
     methods: {
-
+        getProjectsByTechnology(url) {
+            axios.get(url)
+                .then(response => {
+                    if (response.data.success) {
+                        this.projects = response.data.result.data
+                        this.lastPage = response.data.result.last_page;
+                        this.links = response.data.result.links;
+                        this.loading = true
+                        //console.log(this.links);
+                    } else {
+                        console.log('pagina non trovata', 'Sono su technology');
+                        this.$router.push({ name: 'NotFound' })
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+        }
     },
     mounted() {
-        axios.get(this.url)
-            .then(response => {
-                console.log(response.data.success);
-                if (response.data.success) {
-                    this.projects = response.data.result.projects
-                    this.loading = true
-                    console.log(this.projects);
-                } else {
-                    console.log('pagina non trovata', 'Sono tu type');
-                    this.$router.push({ name: 'NotFound' })
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            })
+        this.getProjectsByTechnology(this.url)
 
     }
 
@@ -54,19 +65,19 @@ export default {
 
             </div>
 
-            <!-- <div class="py-5">
+            <div class="py-5">
 
-                        <nav aria-label="Page navigation" class="d-flex justify-content-center">
-                            <ul class="pagination">
-                                <li class="page-item" :class="link.active ? 'active' : ''" aria-current="page"
-                                    v-for="link in this.links">
-                                    <a class="page-link" role="button" @click="this.getProjects(link.url)"
-                                        v-html="link.label"></a>
-                                </li>
-                            </ul>
-                        </nav>
+                <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item" :class="link.active ? 'active' : ''" aria-current="page"
+                            v-for="link in this.links">
+                            <a class="page-link" role="button" @click="this.getProjectsByTechnology(link.url)"
+                                v-html="link.label"></a>
+                        </li>
+                    </ul>
+                </nav>
 
-                    </div> -->
+            </div>
         </div>
 
         <div v-else>

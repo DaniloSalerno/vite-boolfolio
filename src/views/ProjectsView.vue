@@ -44,6 +44,7 @@ export default {
     mounted() {
         this.getProjects(this.state.base_url + this.state.projects_api)
         this.state.getTypes()
+        this.state.getTechnologies()
     }
 }
 </script>
@@ -100,8 +101,9 @@ export default {
                 </div>
             </div>
 
-            <div class="col-3 py-5 text-center">
-                <div>
+            <div class="col-3 text-center">
+
+                <div class="types py-5">
                     <ul class=" list-unstyled">
                         <li v-for="typ in this.state.types">
                             <router-link :to="{ name: 'type', params: { slug: typ.slug } }" class="text-decoration-none"> {{
@@ -109,7 +111,22 @@ export default {
                         </li>
                     </ul>
                 </div>
+
+                <div class="technologies">
+                    <ul class=" list-unstyled">
+                        <li v-for="technology in this.state.technologies">
+                            <router-link :to="{ name: 'technology', params: { slug: technology.slug } }"
+                                class="text-decoration-none"> {{
+                                    technology.name }} </router-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
+            <div col-3 py-5 text-center>
+
+            </div>
+
         </div>
 
     </div>

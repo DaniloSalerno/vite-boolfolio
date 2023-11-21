@@ -47,7 +47,7 @@ export default {
  -->
                 <div><strong>Technologies:</strong></div>
                 <ul>
-                    <li v-for="technology in project.technologies">{{ technology.name }}</li>
+                    <!-- <li v-for="technology in project.technologies">{{ technology.name }}</li> -->
                 </ul>
 
 
