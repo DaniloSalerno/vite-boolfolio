@@ -9,7 +9,7 @@ export default {
 
 <template>
     <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 border-0">
 
             <img height="200" class="object-fit-cover" :src="project.thumb" alt="">
 
@@ -45,18 +45,29 @@ export default {
 
                 <!-- <div><strong>Type:</strong>{{ project.type.name }}</div>
  -->
-                <div><strong>Technologies:</strong></div>
+                <!-- <div><strong>Technologies:</strong></div>
                 <ul>
-                    <!-- <li v-for="technology in project.technologies">{{ technology.name }}</li> -->
-                </ul>
+                    <li v-for="technology in project.technologies">{{ technology.name }}</li>
+                </ul> -->
 
 
 
             </div>
-            <RouterLink :to="{ name: 'project', params: { slug: project.slug } }" class="text-white btn btn-primary">View
-            </RouterLink>
+            <div class="d-flex justify-content-center pb-3">
+                <RouterLink :to="{ name: 'project', params: { slug: project.slug } }" class="text-white btn btn-dark w-25">
+                    View
+                </RouterLink>
+            </div>
         </div>
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card {
+    &:hover {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+
+        transition: all 0.3s;
+    }
+}
+</style>

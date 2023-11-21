@@ -54,8 +54,22 @@ export default {
         <div class="row">
             <div class="col-9">
                 <div v-if="this.loading">
-                    <h1 class="py-5">Projects</h1>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+                    <h1 class="py-4">Projects</h1>
+
+                    <div class="pb-2">
+
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item" :class="link.active ? 'active' : ''" aria-current="page"
+                                    v-for="link in this.links">
+                                    <a class="page-link" role="button" @click="this.getProjects(link.url)"
+                                        v-html="link.label"></a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
                         <ProjectCard :project="project" v-for="project in this.projects" />
 
@@ -64,7 +78,7 @@ export default {
 
                     <div class="py-5">
 
-                        <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                        <nav aria-label="Page navigation">
                             <ul class="pagination">
                                 <li class="page-item" :class="link.active ? 'active' : ''" aria-current="page"
                                     v-for="link in this.links">
