@@ -61,7 +61,7 @@ export default {
     <div class="container pb-5">
         <div v-if="this.loading">
             <h1 class="py-5">Projects by {{ $route.params.slug }}</h1>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
 
                 <ProjectCard :project="project" v-for="project in this.projects" />
 
@@ -84,8 +84,8 @@ export default {
         </div>
 
         <div v-else>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 py-5">
-                <div class="col" v-for="n in 10">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+                <div class="col" v-for="n in 8">
                     <div class="card" aria-hidden="true">
                         <div class="card-body">
                             <h5 class="card-title placeholder-glow">

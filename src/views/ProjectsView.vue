@@ -92,8 +92,8 @@ export default {
                 </div>
 
                 <div v-else>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 py-5">
-                        <div class="col" v-for="n in 10">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 py-5 my-5">
+                        <div class="col" v-for="n in 6">
                             <div class="card" aria-hidden="true">
                                 <div class="card-body">
                                     <h5 class="card-title placeholder-glow">
