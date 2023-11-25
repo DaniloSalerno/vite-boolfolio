@@ -15,12 +15,13 @@ export const state = reactive({
     types: [],
     technologies: [],
     loading: false,
+    overlay: true,
 
     getLatestProjects() {
         axios
             .get(this.base_url + this.latestProject_api)
             .then(response => {
-                //console.log(response);
+                console.log(response.data.result);
                 this.latestProjects = response.data.result
                 this.loading = true
             })

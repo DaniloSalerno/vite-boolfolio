@@ -2,6 +2,7 @@
 import ProjectCard from './components/ProjectCard.vue';
 import AppFooter from './components/AppFooter.vue';
 import AppHeader from './components/AppHeader.vue';
+import AppOverlay from './components/AppOverlay.vue';
 import { state } from './state.js';
 
 export default {
@@ -16,19 +17,27 @@ export default {
   components: {
     ProjectCard,
     AppFooter,
-    AppHeader
+    AppHeader,
+    AppOverlay
   }
 }
 </script>
 
 <template>
-  <AppHeader />
+  <div class=" position-relative">
 
-  <main>
-    <RouterView />
-  </main>
+    <div v-if="state.overlay">
+      <AppOverlay />
+    </div>
 
-  <AppFooter />
+    <AppHeader />
+
+    <main>
+      <RouterView />
+    </main>
+
+    <AppFooter />
+  </div>
 </template>
 
 <style scoped></style>

@@ -10,21 +10,50 @@ export default {
 </script>
 
 <template>
-    <footer class="bg-dark py-5">
+    <footer class="bg-dark text-white py-5">
         <div class="container">
-            <div class="row">
-                <div class="col" v-for="item in 3">
-                    <h3 class="text-white">Links</h3>
-                    <ul class="list-unstyled">
-                        <li v-for="item in 6">
-                            <a href="##" class="text-white text-decoration-none">Lorem</a>
-                        </li>
+            <div class="row row-cols-1 row-cols-md-3">
 
+                <div class="col">
+                    <ul class="list-unstyled d-flex">
+                        <li>
+                            <RouterLink class="nav-link p-2 d-inline-block" to="/">Home
+                            </RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="nav-link p-2 d-inline-block" to="/projects">
+                                Projects
+                            </RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="nav-link p-2 d-inline-block" to="/about">About
+                            </RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="nav-link p-2 d-inline-block" to="/contacts">
+                                Contacts
+                            </RouterLink>
+                        </li>
                     </ul>
                 </div>
+
+                <div class="col">
+
+                </div>
+
+                <div class="col">
+                    © 2023 Salerno Danilo - All Rights Reserved.
+                </div>
+
             </div>
         </div>
     </footer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.nav-link {
+    &:hover {
+        color: red;
+    }
+}
+</style>
