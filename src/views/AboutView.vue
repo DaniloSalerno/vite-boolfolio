@@ -15,15 +15,26 @@ export default {
                 acquired fundamental skills and a solid understanding of basic principles.
             </p>
 
-            <h2>My Story
-
-            </h2>
-
             <p>My coding passion ignited during my learning journey, where I explored the intricate mazes of front-end and
-                back-end development. Through practical projects and stimulating challenges, I honed my skills and learned
-                to
-                tackle the complexities of the web development world.
+                back-end development.
             </p>
+
+            <p>Through countless lines of code and debugging sessions, I discovered the power of turning challenges into
+                opportunities for growth. Each project became not just a task, but a stepping stone in my journey towards
+                becoming a proficient web developer.</p>
+
+            <p>From the excitement of conquering my first responsive design to the thrill of solving complex algorithmic
+                puzzles, every hurdle became a lesson, and every success fueled my desire to delve deeper into the world of
+                web development.</p>
+
+            <p>What keeps me passionate is the ever-evolving nature of technology. In this fast-paced environment, I've
+                learned not only to adapt but to embrace change, knowing that each innovation brings new possibilities for
+                creativity and problem-solving.</p>
+
+            <p>As I continue on this exhilarating path, I look forward to the challenges that will shape my skills and the
+                projects that will become a testament to my dedication to creating meaningful and impactful digital
+                experiences.</p>
+
 
             <h2>
                 What I Do
@@ -36,9 +47,10 @@ export default {
             <ul>
                 <li><strong>Front-end Web Development 🎨</strong><br>
                     Creating engaging and captivating user experiences using the latest web technologies. Mastery of HTML,
-                    CSS,
-                    and JavaScript allows me to transform ideas into visually extraordinary interfaces. The integration of
-                    Vue.js adds a dynamic and interactive touch to my creations, making the user experience unforgettable.
+                    CSS, and JavaScript allows me to transform ideas into visually extraordinary interfaces. The integration
+                    of Bootstrap accelerates the development process, providing a solid foundation for responsive and modern
+                    designs. Additionally, Vue.js adds a dynamic and interactive touch to my creations, making the user
+                    experience unforgettable.
                 </li>
 
                 <li><strong>Back-end Web Development 💻</strong><br>
@@ -87,4 +99,12 @@ export default {
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h1,
+h2 {
+    width: 75%;
+    padding: 0.5rem;
+    background-image: linear-gradient(to right, red, white);
+    ;
+}
+</style>

@@ -17,7 +17,7 @@ const routes = [
     { path: '/projects', name: 'projects', component: ProjectsView },
     { path: '/projects/:slug', name: 'project', component: SingleProjectView },
 
-    { path: '/types/:slug', name: 'type', component: TypeView },
+    { path: '/types/:slug/projects', name: 'type', component: TypeView },
 
     { path: '/technology/:slug/projects', name: 'technology', component: TechnologyView },
 
