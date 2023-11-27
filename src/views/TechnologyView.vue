@@ -99,7 +99,7 @@ export default {
                             <!-- /.Page navigation -->
 
                         </div>
-                        <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 g-4">
+                        <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 gx-3 gy-5">
 
                             <ProjectCard :project="project" v-for="project in this.projects" />
 
@@ -123,7 +123,7 @@ export default {
                         </div>
                     </div>
                     <div v-else>
-                        <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 g-4 py-5">
+                        <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3  gx-3 gy-5 py-5">
                             <div class="col" v-for="n in 6">
                                 <div class="card" aria-hidden="true">
                                     <div class="card-body">

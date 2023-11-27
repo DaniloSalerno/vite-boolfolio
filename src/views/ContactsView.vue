@@ -62,7 +62,7 @@ export default {
 
         <form action="#" class="py-5" v-on:submit.prevent="sendForm()">
 
-            <div class="d-flex gap-4 justify-content-between pb-5">
+            <div class="d-flex flex-wrap gap-4 justify-content-between pb-5">
                 <div class="form-floating flex-grow-1">
                     <input type="text" class="form-control" :class="{ 'is-invalid': errors.name }" id="name"
                         placeholder="Mario Rossi" v-model="name">
@@ -74,22 +74,22 @@ export default {
                 </div>
 
                 <div class="form-floating flex-grow-1">
-                    <input type="email" class="form-control" :class="{ 'is-invalid': errors.email }" id="email"
-                        placeholder="name@example.com" v-model="email">
-                    <label for="email">Email address</label>
-                    <div class="text-danger mt-2" role="alert" v-if="errors.email">
-                        <strong>Errore! </strong>
-                        <span v-for="message in errors.email">{{ message }}</span>
-                    </div>
-                </div>
-
-                <div class="form-floating flex-grow-1">
                     <input type="tel" class="form-control" :class="{ 'is-invalid': errors.phone }" id="phone"
                         placeholder="0123456789" v-model="phone">
                     <label for="phone">Phone number</label>
                     <div class="text-danger mt-2" role="alert" v-if="errors.phone">
                         <strong>Errore! </strong>
                         <span v-for="message in errors.phone">{{ message }}</span>
+                    </div>
+                </div>
+
+                <div class="form-floating flex-grow-1">
+                    <input type="email" class="form-control" :class="{ 'is-invalid': errors.email }" id="email"
+                        placeholder="name@example.com" v-model="email">
+                    <label for="email">Email address</label>
+                    <div class="text-danger mt-2" role="alert" v-if="errors.email">
+                        <strong>Errore! </strong>
+                        <span v-for="message in errors.email">{{ message }}</span>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@ export default {
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" :disabled="loading"> {{ loading ? 'Sending...' : 'Send' }}
+            <button type="submit" class="btn btn-dark" :disabled="loading"> {{ loading ? 'Sending...' : 'Send' }}
             </button>
 
             <div class="alert alert-success mt-2" role="alert" v-if="formSend">
