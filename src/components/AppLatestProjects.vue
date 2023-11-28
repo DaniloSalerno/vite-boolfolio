@@ -89,7 +89,7 @@ p {
     }
 
     .latest {
-        background-size: 200%, 150%;
+        background-size: 100%, 100%;
     }
 }
 </style>
