@@ -295,11 +295,17 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../assets/scss/partials/variables' as *;
+
+.projects {
+    background-color: $bool_primary_light;
+}
+
 li>.text-decoration-none {
     color: black;
 
     &:hover {
-        color: red;
+        color: $bool_primary;
     }
 }
 </style>

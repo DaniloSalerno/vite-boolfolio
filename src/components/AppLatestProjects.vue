@@ -23,8 +23,9 @@ export default {
 <template>
     <section class="latest py-5">
         <div class="container" v-if="this.state.loading">
-            <h2 class="text-uppercase pb-2">My latest projects</h2>
-            <p>Explore my latest projects, a blend of design and functionality that reflects my passion for web development.
+            <h2 class="text-uppercase text-center pb-2">My latest projects</h2>
+            <p class="text-center">Explore my latest projects, a blend of design and functionality that reflects my passion
+                for web development.
             </p>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 py-5">
                 <ProjectCard :project="project" v-for="project in this.state.latestProjects" />
@@ -63,8 +64,12 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../assets/scss/partials/variables' as *;
+
 h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    color: $bool_primary;
+    font-weight: bold;
 }
 
 p {
@@ -72,24 +77,17 @@ p {
 }
 
 
-.latest {
-    background-image: url('../assets/img/wave-latest1.svg'), url('../assets/img/wave-latest-bottom.svg');
-    background-repeat: no-repeat;
-    background-position: top, bottom;
-    background-size: 400%, 500%;
-}
+.latest {}
 
 @media screen and (min-width: 768px) {
     h2 {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 
     p {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
-    .latest {
-        background-size: 100%, 100%;
-    }
+    .latest {}
 }
 </style>

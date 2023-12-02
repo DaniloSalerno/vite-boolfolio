@@ -100,11 +100,13 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../assets/scss/partials/variables' as *;
+
 h1,
 h2 {
-    width: 75%;
-    padding: 0.5rem;
-    background-image: linear-gradient(to right, red, white);
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    background-image: linear-gradient(to right, $bool_primary, $bool_primary_light);
     ;
 }
 </style>

@@ -6,13 +6,12 @@ export default {
 
 <template>
     <div class="jumbotron">
-        <div class="container">
-            <div class="col-12 col-md-8">
-                Welcome to my web space! <br> I'm <span class="text-danger">Danilo</span>,a web developer. <br>See what I
-                can
-                create
-                in
-                my portfolio.
+        <div class="container h-100">
+            <div class="text-center d-flex flex-column justify-content-center align-items-center h-100">
+
+                <div class="jumbo_hey">Hey! I am</div>
+                <h1>Danilo Salerno</h1>
+                <div class="jumbo_dev">I'm a <span>web developer</span></div>
 
             </div>
         </div>
@@ -21,40 +20,60 @@ export default {
 
 
 <style lang="scss" scoped>
-.jumbotron {
-    min-height: 250px;
-    padding: 4rem 0;
-    font-size: 1.75rem;
+@use '../assets/scss/partials/variables' as *;
 
-    background-image: url('../assets/img/wave-jumbo4.svg');
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 200%;
+
+.jumbotron {
+
+    height: calc(100vh - 70px);
+
+    background: rgb(217, 242, 255);
+    background: linear-gradient(90deg, $bool_primary_light 50%, white 50%);
+
+    font-weight: bold;
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .jumbo_hey {
+        font-size: 1.5rem;
+        color: $bool_primary;
+    }
+
+    .jumbo_dev {
+        font-size: 1.5rem;
+
+        span {
+            color: $bool_primary;
+        }
+
+    }
 
 }
 
 @media screen and (min-width: 576px) {
-    .jumbotron {
-        min-height: 300px;
-
-        font-size: 2.25rem;
-        background-position: bottom;
-
-        background-size: 200%;
-    }
+    .jumbotron {}
 }
 
 @media screen and (min-width: 768px) {
     .jumbotron {
-        background-size: 150%;
+        h1 {
+            font-size: 5rem;
+        }
+
+        .jumbo_hey {
+            font-size: 2rem;
+        }
+
+        .jumbo_dev {
+            font-size: 3rem;
+
+        }
     }
 }
 
 @media screen and (min-width: 992px) {
-    .jumbotron {
-        font-size: 3rem;
-
-        background-size: 100%;
-    }
+    .jumbotron {}
 }
 </style>

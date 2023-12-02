@@ -2,42 +2,26 @@
 import ProjectCard from './components/ProjectCard.vue';
 import AppFooter from './components/AppFooter.vue';
 import AppHeader from './components/AppHeader.vue';
-import AppOverlay from './components/AppOverlay.vue';
-import { state } from './state.js';
 
 export default {
   name: 'App',
 
-  data() {
-    return {
-      state
-    }
-
-  },
   components: {
     ProjectCard,
     AppFooter,
     AppHeader,
-    AppOverlay
   }
 }
 </script>
 
 <template>
-  <div class=" position-relative">
+  <AppHeader />
 
-    <div v-if="state.overlay">
-      <AppOverlay />
-    </div>
+  <main>
+    <RouterView />
+  </main>
 
-    <AppHeader />
-
-    <main>
-      <RouterView />
-    </main>
-
-    <AppFooter />
-  </div>
+  <AppFooter />
 </template>
 
 <style scoped></style>
