@@ -43,9 +43,9 @@ export default {
     <div class="project py-4">
         <div class="container">
 
-            <div class="card border-0 mx-auto col-3 d-flex flex-column gap-4">
+            <div class="border-0 mx-auto col-9 d-flex flex-column gap-4">
 
-                <img width="300" :src="project.thumb" alt="">
+                <img width="800" :src="project.thumb" alt="">
 
                 <div class="d-flex gap-2">
                     <strong>Project name</strong>

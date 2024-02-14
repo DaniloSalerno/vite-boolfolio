@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-    <header class="position-sticky top-0 left-0 z-3 shadow border-bottom border-primary">
+    <header class="position-sticky top-0 left-0 shadow border-bottom border-primary">
         <nav class="navbar navbar-expand-sm navbar-light p-0 h-100">
             <div class="container h-100">
                 <div class="h-100 d-flex align-items-center">
@@ -55,6 +55,7 @@ export default {
 header {
     height: 70px;
     background-color: white;
+    z-index: 100;
 
     .active_page {
         background-color: $bool_primary;
